@@ -66,12 +66,34 @@ footer a:hover{color:#f2bd55}
 .audio-control{border:1px solid #dce9dc;color:#123c2d;box-shadow:0 8px 28px rgba(0,0,0,.16)}
 @media(max-width:760px){nav{gap:10px}.brand{font-size:.95rem}.links .btn{padding:9px 12px;font-size:.8rem}.hero-inner{padding:74px 6%}.hero h1{font-size:clamp(2.8rem,12vw,4.4rem)}.feature:hover{transform:none}}
 
+
+/* Gentle morning sunlight and birds gliding across the hero */
+.hero{position:relative;isolation:isolate;overflow:hidden}
+.hero::before{content:"";position:absolute;z-index:-1;inset:-18% -8% 0 28%;pointer-events:none;background:repeating-conic-gradient(from 248deg at 72% 16%,rgba(255,224,151,0) 0deg 5deg,rgba(255,226,164,.23) 5deg 7deg,rgba(255,224,151,0) 7deg 13deg);mask-image:radial-gradient(ellipse at 72% 16%,#000 0%,rgba(0,0,0,.72) 24%,transparent 65%);animation:sunbeamDrift 18s ease-in-out infinite alternate}
+.hero::after{content:"";position:absolute;z-index:-1;top:-12%;right:8%;width:clamp(190px,29vw,410px);height:clamp(190px,29vw,410px);border-radius:50%;background:radial-gradient(circle,rgba(255,238,188,.34) 0%,rgba(255,221,142,.2) 32%,rgba(255,220,148,.08) 56%,transparent 72%);filter:blur(3px);pointer-events:none;animation:sunGlow 7s ease-in-out infinite alternate}
+.sunlight-rays{position:absolute;z-index:0;top:0;right:0;width:min(58vw,700px);height:100%;pointer-events:none;opacity:.8}
+.flying-birds{position:absolute;z-index:1;top:13%;right:8%;width:min(34vw,380px);height:160px;overflow:visible;pointer-events:none}
+.flying-birds svg{width:100%;height:100%;overflow:visible}
+.bird-flock{fill:none;stroke:rgba(22,42,29,.78);stroke-width:3.3;stroke-linecap:round;stroke-linejoin:round}
+.bird-one{animation:birdGlide 13s ease-in-out infinite}
+.bird-two{animation:birdGlide 16s ease-in-out -5s infinite}
+.bird-three{animation:birdGlide 11s ease-in-out -3s infinite}
+.hero-inner{position:relative;z-index:2}
+@keyframes sunbeamDrift{from{transform:translateX(-2%) rotate(-2deg);opacity:.55}to{transform:translateX(2%) rotate(2deg);opacity:.95}}
+@keyframes sunGlow{from{transform:scale(.96);opacity:.65}to{transform:scale(1.08);opacity:1}}
+@keyframes birdGlide{0%,100%{transform:translate(0,0) rotate(-2deg)}50%{transform:translate(-18px,9px) rotate(2deg)}}
+@media(prefers-reduced-motion:reduce){.hero::before,.hero::after,.bird-one,.bird-two,.bird-three{animation:none!important}}
+@media(max-width:760px){.flying-birds{top:8%;right:4%;width:40vw;height:100px;opacity:.8}.hero::before{inset:-8% -35% 0 10%;opacity:.6}.sunlight-rays{width:80vw}}
+
 </style>
 </head>
 <body>
 <header><nav><a class="brand" href="#home" style="text-decoration:none">DISCOVERY HILLS<small>NATURE • STAY • RESTORE</small></a><div class="links"><a href="#experience">Experience</a><a href="#packages">Packages</a><a href="#dining">Food</a><a href="#policies">Villa policies</a><a href="#location">Find us</a><a href="#contact">Contact</a><a class="btn" href="#booking">Book a stay</a><button class="btn" id="installAppBtn" type="button" hidden>Install app</button></div></nav></header>
 <main>
-<section class="hero" id="home"><div class="hero-inner"><div class="eyebrow">A peaceful escape in Cebu</div><h1>Find your calm<br>at Discovery Hills.</h1><p>Slow down, breathe in the greenery, enjoy a refreshing pool, and make space for moments that matter in Tilhaong, Consolacion.</p><div class="hero-actions"><a class="btn gold" href="#booking">Plan your visit</a><a class="btn outline" href="#gallery">Explore the property</a></div></div></section>
+<section class="hero" id="home">
+<svg class="sunlight-rays" viewBox="0 0 700 600" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rayFade" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe6a6" stop-opacity=".3"/><stop offset="1" stop-color="#ffe6a6" stop-opacity="0"/></linearGradient></defs><path d="M470 0 L530 0 L280 600 L190 600 Z" fill="url(#rayFade)"/><path d="M545 0 L570 0 L390 600 L350 600 Z" fill="url(#rayFade)"/><path d="M620 0 L650 0 L520 600 L480 600 Z" fill="url(#rayFade)"/></svg>
+<div class="flying-birds" aria-hidden="true"><svg viewBox="0 0 380 160"><g class="bird-flock bird-one"><path d="M20 52 Q34 36 48 52 Q61 65 75 48 Q88 33 102 48"/></g><g class="bird-flock bird-two"><path d="M126 28 Q138 15 150 28 Q162 40 174 26 Q186 13 198 26"/></g><g class="bird-flock bird-three"><path d="M215 63 Q225 52 235 63 Q246 74 257 61 Q268 49 279 61"/></g><g class="bird-flock bird-two"><path d="M286 25 Q295 17 304 25 Q313 34 322 24 Q331 15 340 24"/></g></svg></div>
+<div class="hero-inner><div class="eyebrow">A peaceful escape in Cebu</div><h1>Find your calm<br>at Discovery Hills.</h1><p>Slow down, breathe in the greenery, enjoy a refreshing pool, and make space for moments that matter in Tilhaong, Consolacion.</p><div class="hero-actions"><a class="btn gold" href="#booking">Plan your visit</a><a class="btn outline" href="#gallery">Explore the property</a></div></div></section>
 <section id="experience"><div class="wrap"><div class="section-head"><div class="kicker">A little closer to nature</div><h2>Room to relax. Space to reconnect.</h2><p>Enjoy a tranquil setting with inviting villa spaces, poolside lounging, garden paths, and a cozy café atmosphere.</p></div><div class="features"><article class="feature"><div class="icon">🏡</div><b>Comfortable villa stays</b><p>Unwind in warm, thoughtfully styled rooms and spacious living areas.</p></article><article class="feature"><div class="icon">💧</div><b>Poolside moments</b><p>Cool off, relax by the water, and enjoy time with your favorite people.</p></article><article class="feature"><div class="icon">🌿</div><b>Gardens & quiet paths</b><p>Wander among tropical plants, flowering gardens, and peaceful outdoor spaces.</p></article></div></div></section>
 <section class="gallery" id="gallery"><div class="wrap"><div class="section-head"><div class="kicker">Take a look around</div><h2>Your next getaway, in pictures.</h2><p>Photos of the property and spaces shared by Discovery Hills.</p></div><div class="photos">
 <div class="photo"><img src="villa-pool.jpg" alt="Villa beside a swimming pool" loading="lazy"><span>Villa & pool</span></div>
