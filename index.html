@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#183e2b">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/app-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/app-icon.svg">
 <meta name="description" content="Discover Discovery Hills in Tilhaong, Consolacion, Cebu — relaxing villas, pools, gardens and coffee.">
 <title>Discovery Hills | Nature, Rest & Renewal</title>
 <style>
@@ -24,7 +27,7 @@ footer{background:#10291c;color:#dce6da;padding:38px 5%}.footer-inner{max-width:
 </style>
 </head>
 <body>
-<header><nav><a class="brand" href="#home" style="text-decoration:none">DISCOVERY HILLS<small>NATURE • STAY • RESTORE</small></a><div class="links"><a href="#experience">Experience</a><a href="#gallery">Gallery</a><a href="#location">Find us</a><a href="#contact">Contact</a><a class="btn" href="#booking">Book a stay</a></div></nav></header>
+<header><nav><a class="brand" href="#home" style="text-decoration:none">DISCOVERY HILLS<small>NATURE • STAY • RESTORE</small></a><div class="links"><a href="#experience">Experience</a><a href="#gallery">Gallery</a><a href="#location">Find us</a><a href="#contact">Contact</a><a class="btn" href="#booking">Book a stay</a><button class="btn" id="installAppBtn" type="button" hidden>Install app</button></div></nav></header>
 <main>
 <section class="hero" id="home"><div class="hero-inner"><div class="eyebrow">A peaceful escape in Cebu</div><h1>Find your calm<br>at Discovery Hills.</h1><p>Slow down, breathe in the greenery, enjoy a refreshing pool, and make space for moments that matter in Tilhaong, Consolacion.</p><div class="hero-actions"><a class="btn gold" href="#booking">Plan your visit</a><a class="btn outline" href="#gallery">Explore the property</a></div></div></section>
 <section id="experience"><div class="wrap"><div class="section-head"><div class="kicker">A little closer to nature</div><h2>Room to relax. Space to reconnect.</h2><p>Enjoy a tranquil setting with inviting villa spaces, poolside lounging, garden paths, and a cozy café atmosphere.</p></div><div class="features"><article class="feature"><div class="icon">🏡</div><b>Comfortable villa stays</b><p>Unwind in warm, thoughtfully styled rooms and spacious living areas.</p></article><article class="feature"><div class="icon">💧</div><b>Poolside moments</b><p>Cool off, relax by the water, and enjoy time with your favorite people.</p></article><article class="feature"><div class="icon">🌿</div><b>Gardens & quiet paths</b><p>Wander among tropical plants, flowering gardens, and peaceful outdoor spaces.</p></article></div></div></section>
@@ -37,7 +40,6 @@ footer{background:#10291c;color:#dce6da;padding:38px 5%}.footer-inner{max-width:
 <div class="photo"><img src="living-suite.jpg" alt="Spacious suite with lounge and bed" loading="lazy"><span>Spacious living</span></div>
 <div class="photo"><img src="angel-garden.jpg" alt="Angel statue surrounded by gardens" loading="lazy"><span>Garden details</span></div>
 <div class="photo"><img src="garden-path.jpg" alt="Green landscaped garden path" loading="lazy"><span>Walk among greenery</span></div>
-<div class="photo"><img src="stations-garden.jpg" alt="Landscaped outdoor devotional garden" loading="lazy"><span>Peaceful grounds</span></div>
 <div class="photo"><img src="villa-exterior-2.jpg" alt="Wooden villa surrounded by tropical plants" loading="lazy"><span>Villa surrounded by nature</span></div>
 <div class="photo"><img src="family-bedroom.jpg" alt="Spacious bedroom with two beds and warm wood ceilings" loading="lazy"><span>Comfortable group stays</span></div>
 <div class="photo"><img src="garden-stations-2.jpg" alt="Landscaped garden stations along a peaceful path" loading="lazy"><span>Garden and prayer walk</span></div>
@@ -73,5 +75,12 @@ document.getElementById('audioBtn').addEventListener('click',async()=>{const b=d
 document.getElementById('bookingForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target);if(f.get('departure')<f.get('arrival')){alert('Departure date must be the same as or later than arrival date.');return}const lines=['DISCOVERY HILLS — BOOKING INQUIRY','',...Array.from(f.entries()).map(([k,v])=>k+': '+v)];const blob=new Blob([lines.join('\n')],{type:'text/plain'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='discovery-hills-booking-inquiry.txt';a.click();URL.revokeObjectURL(a.href);const result=document.getElementById('bookingResult');result.style.display='block';result.textContent='Your inquiry details were downloaded as a text file. Please send them to the property using its official contact channel. This does not reserve a date.'});
 document.getElementById('reviewForm').addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('reviewer').value.trim(),rating=Number(document.getElementById('rating').value),comment=document.getElementById('reviewText').value.trim();const item=document.createElement('article');item.className='review';const stars=document.createElement('div');stars.className='stars';stars.textContent='★'.repeat(rating)+'☆'.repeat(5-rating);const p=document.createElement('p');p.textContent='“'+comment+'”';const cite=document.createElement('cite');cite.textContent=name;const small=document.createElement('small');small.textContent='Saved locally on this device · Demo feedback';item.append(stars,p,cite,small);document.getElementById('reviewList').prepend(item);try{const old=JSON.parse(localStorage.getItem('discoveryHillsReviews')||'[]');old.unshift({name,rating,comment});localStorage.setItem('discoveryHillsReviews',JSON.stringify(old.slice(0,30)))}catch(_){}e.target.reset()});
 document.querySelectorAll('input[type=date]').forEach(x=>x.min=new Date().toISOString().slice(0,10));
+
+// Progressive Web App: allow supported browsers to install Discovery Hills.
+let installPrompt=null;const installButton=document.getElementById('installAppBtn');
+window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();installPrompt=event;installButton.hidden=false;});
+installButton.addEventListener('click',async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;installButton.hidden=true;});
+window.addEventListener('appinstalled',()=>{installButton.hidden=true;});
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));}
 </script>
 </body></html>
