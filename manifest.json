@@ -1,0 +1,20 @@
+{
+  "id": "/",
+  "name": "Discovery Hills",
+  "short_name": "Discovery Hills",
+  "description": "Nature, stay and restore in Tilhaong, Consolacion, Cebu.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f8f5ec",
+  "theme_color": "#183e2b",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
