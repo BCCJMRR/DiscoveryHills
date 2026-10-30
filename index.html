@@ -24,6 +24,48 @@ section{padding:78px 5%}.wrap{max-width:1160px;margin:auto}.section-head{max-wid
 footer{background:#10291c;color:#dce6da;padding:38px 5%}.footer-inner{max-width:1160px;margin:auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}footer a{color:#f0dca7}.audio-control{position:fixed;right:16px;bottom:16px;z-index:12;border:0;border-radius:999px;padding:13px 17px;background:#fff;box-shadow:0 5px 25px #0002;color:var(--green);font-weight:700;cursor:pointer}
 .toast{display:none;padding:12px;background:#e6ecdf;color:var(--green);border-radius:8px;margin-top:12px}
 @media(max-width:760px){nav{align-items:flex-start}.links{justify-content:flex-end;flex-wrap:wrap;gap:10px!important}.links a:not(.btn){display:none}.hero{min-height:70vh}.features,.photos,.reviews,.split{grid-template-columns:1fr}.photo,.photo img{min-height:250px}.split img{height:300px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}section{padding:58px 5%}.qr-row{align-items:flex-start}.audio-control{bottom:10px;right:10px}}
+
+/* Visual refresh: richer, more visible resort colors and clearer content hierarchy */
+:root{--green:#123c2d;--leaf:#287a58;--cream:#fffaf0;--gold:#f2bd55;--ink:#1d3028;--coral:#d96b4b;--sage:#e4f0e5}
+body{background:var(--cream);color:var(--ink)}
+header{background:rgba(255,250,240,.97);border-bottom:2px solid #d8e8d9;box-shadow:0 5px 22px rgba(18,60,45,.08)}
+.brand{font-size:1.18rem;color:#123c2d}.brand small{color:#287a58}
+nav a{transition:color .2s ease}nav a:hover{color:var(--coral)}
+.btn{background:#176444;box-shadow:0 5px 14px rgba(18,60,45,.16);transition:transform .2s,background .2s}
+.btn:hover{background:#0b3022;transform:translateY(-2px)}
+.btn.gold{background:#f2bd55;color:#183326!important;box-shadow:0 5px 16px rgba(242,189,85,.3)}
+.btn.gold:hover{background:#ffd47c}
+.hero{background-image:linear-gradient(90deg,rgba(8,38,26,.88) 0%,rgba(8,38,26,.62) 48%,rgba(8,38,26,.12) 100%),url('entrance.jpg');position:relative}
+.hero h1{text-shadow:0 4px 22px rgba(0,0,0,.24);letter-spacing:-.035em}
+.hero p{color:#fffdf6;font-size:1.18rem}
+.eyebrow{display:inline-block;background:rgba(242,189,85,.16);border:1px solid rgba(242,189,85,.7);border-radius:999px;padding:7px 13px}
+section{scroll-margin-top:90px}
+.section-head h2{letter-spacing:-.025em}
+.kicker{color:#287a58}
+.features{gap:20px}
+.feature{border:1px solid #dce9dc;border-radius:18px;box-shadow:0 8px 26px rgba(18,60,45,.055);transition:transform .2s,box-shadow .2s}
+.feature:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(18,60,45,.11)}
+.feature b{color:#123c2d}
+.feature h3{font-size:2rem;color:#c45e3e;margin:8px 0}
+.gallery{background:linear-gradient(180deg,#e9f2e7 0%,#f3f6ec 100%)}
+.photo{box-shadow:0 10px 24px rgba(18,60,45,.12)}
+.photo span{font-size:1rem}
+.split img{box-shadow:0 16px 35px rgba(18,60,45,.16)}
+.note{background:#fff1cf;border-left-color:#d96b4b;color:#34483b}
+.booking{background:radial-gradient(circle at 90% 10%,#287a58 0%,#123c2d 42%,#0b2b20 100%)}
+.booking .kicker{color:#f2bd55}
+.booking .section-head h2{color:#fffaf0}
+.booking .section-head p{color:#e1eee2}
+.field input:focus,.field select:focus,.field textarea:focus{outline:3px solid rgba(242,189,85,.7);border-color:#287a58}
+.review-form{box-shadow:0 10px 30px rgba(18,60,45,.06)}
+.location{background:#e7f0e4}
+.map-frame{box-shadow:0 12px 30px rgba(18,60,45,.12)}
+.qr-row{border:1px solid #dce9dc;box-shadow:0 8px 24px rgba(18,60,45,.06)}
+footer{background:linear-gradient(120deg,#0b2b20,#174b36);border-top:5px solid #f2bd55}
+footer a:hover{color:#f2bd55}
+.audio-control{border:1px solid #dce9dc;color:#123c2d;box-shadow:0 8px 28px rgba(0,0,0,.16)}
+@media(max-width:760px){nav{gap:10px}.brand{font-size:.95rem}.links .btn{padding:9px 12px;font-size:.8rem}.hero-inner{padding:74px 6%}.hero h1{font-size:clamp(2.8rem,12vw,4.4rem)}.feature:hover{transform:none}}
+
 </style>
 </head>
 <body>
