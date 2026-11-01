@@ -85,6 +85,23 @@ footer a:hover{color:#f2bd55}
 @media(prefers-reduced-motion:reduce){.hero::before,.hero::after,.bird-one,.bird-two,.bird-three{animation:none!important}}
 @media(max-width:760px){.flying-birds{top:8%;right:4%;width:40vw;height:100px;opacity:.8}.hero::before{inset:-8% -35% 0 10%;opacity:.6}.sunlight-rays{width:80vw}}
 
+
+/* More natural moving sunlight over the actual entrance photo */
+.hero{background-blend-mode:normal}
+.sunlight-rays{z-index:1;width:min(76vw,900px);right:-3%;opacity:.9;mix-blend-mode:screen;filter:blur(7px);animation:rayWash 12s ease-in-out infinite alternate;transform-origin:70% 0}
+.sunlight-rays path{transform-box:fill-box;transform-origin:top center;animation:rayMove 9s ease-in-out infinite alternate}
+.sunlight-rays path:nth-of-type(2){animation-delay:-3s;opacity:.72}
+.sunlight-rays path:nth-of-type(3){animation-delay:-6s;opacity:.55}
+.sunlight-rays path:nth-of-type(4){animation-delay:-1.5s;opacity:.42}
+@keyframes rayWash{0%{transform:translate3d(1.5%,0,0) scale(1);opacity:.58;filter:blur(10px)}45%{opacity:.86}100%{transform:translate3d(-2%,1%,0) scale(1.04);opacity:.76;filter:blur(6px)}}
+@keyframes rayMove{0%{transform:translateX(-9px) rotate(-1.5deg);opacity:.45}50%{opacity:.9}100%{transform:translateX(12px) rotate(1.5deg);opacity:.62}}
+.hero::before{z-index:0;inset:-18% -8% 0 28%;mix-blend-mode:screen;opacity:.58}
+.hero::after{z-index:0;mix-blend-mode:screen}
+.flying-birds{z-index:2}
+.hero-inner{z-index:3}
+@media(prefers-reduced-motion:reduce){.sunlight-rays,.sunlight-rays path{animation:none!important;transform:none!important}}
+@media(max-width:760px){.sunlight-rays{width:95vw;right:-20%;filter:blur(9px)}}
+
 </style>
 </head>
 <body>
