@@ -127,6 +127,27 @@ footer a:hover{color:#f2bd55}
   .hero-actions .btn{padding:10px 14px;font-size:.82rem}
 }
 
+
+/* Desktop-mode phone layout compensation.
+   Chrome's "Desktop site" uses a wide layout viewport on phones. Detect touch-only
+   devices and enlarge/reflow this intermediate-width layout so it remains readable. */
+@media (pointer:coarse) and (hover:none) and (min-width:761px) and (max-width:1200px){
+  header nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;padding:22px 5%}
+  header nav .brand{display:block;flex:1 0 100%;font-size:2rem;line-height:1.25}
+  header nav .brand small{font-size:1rem;letter-spacing:.18em}
+  header nav .links{display:flex;flex:1 0 100%;width:100%;justify-content:flex-start;align-items:center;flex-wrap:wrap;gap:16px}
+  header nav .links a{font-size:1.55rem;line-height:1.35}
+  header nav .links .btn{font-size:1.4rem;padding:16px 22px}
+  .hero{min-height:76vh;align-items:stretch;background-position:center 55%}
+  .hero-inner{min-height:76vh;padding:0 6% 58px;justify-content:flex-end}
+  .hero .eyebrow{font-size:1.1rem;padding:10px 16px}
+  .hero h1{font-size:clamp(4.1rem,6vw,5.4rem);line-height:1.04;max-width:760px;margin:14px 0 18px}
+  .hero p{font-size:1.7rem;line-height:1.5;max-width:760px}
+  .hero-actions{gap:16px;margin-top:24px}
+  .hero-actions .btn{font-size:1.4rem;padding:17px 24px}
+  .flying-birds{width:min(38vw,420px);height:150px}
+}
+
 </style>
 </head>
 <body>
