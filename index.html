@@ -148,6 +148,19 @@ footer a:hover{color:#f2bd55}
   .flying-birds{width:min(38vw,420px);height:150px}
 }
 
+
+/* touch-desktop-layout-v2: make Desktop site mode usable on touch phones */
+@media (min-width:761px) and (max-width:1200px){
+  html.touch-desktop-layout header nav{display:flex;flex-wrap:wrap;align-items:center;gap:14px;padding:18px 5%}
+  html.touch-desktop-layout header nav .brand{flex:1 0 100%;font-size:1.8rem}
+  html.touch-desktop-layout header nav .brand small{font-size:.95rem}
+  html.touch-desktop-layout header nav .links{display:flex;flex:1 0 100%;width:100%;flex-wrap:wrap;justify-content:flex-start;gap:12px!important}
+  html.touch-desktop-layout header nav .links a{font-size:1.25rem;padding:10px 12px}
+  html.touch-desktop-layout header nav .links .btn{font-size:1.2rem;padding:13px 18px;white-space:normal}
+  html.touch-desktop-layout .hero-actions .btn{font-size:1.2rem;padding:14px 19px}
+  html.touch-desktop-layout .btn{min-height:48px}
+}
+
 </style>
 </head>
 <body>
@@ -246,5 +259,8 @@ window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();ins
 installButton.addEventListener('click',async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;installButton.hidden=true;});
 window.addEventListener('appinstalled',()=>{installButton.hidden=true;});
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));}
+</script>
+<script>/* Detect touch devices requesting Chrome's wider Desktop site viewport. */
+if (navigator.maxTouchPoints > 0 || ('ontouchstart' in window)) { document.documentElement.classList.add('touch-desktop-layout'); }
 </script>
 </body></html>
