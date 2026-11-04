@@ -96,6 +96,19 @@ footer a:hover{color:#f2bd55}
 @media(prefers-reduced-motion:reduce){.sunlight-rays,}
 @media(max-width:760px){}
 
+
+/* Keep the Discovery Hills brand clear of navigation buttons on small screens */
+@media(max-width:760px){
+  header nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;row-gap:8px;padding:12px 5%}
+  header nav .brand{display:block;flex:1 0 100%;width:100%;white-space:normal;line-height:1.25}
+  header nav .links{display:flex;flex:1 0 100%;width:100%;justify-content:flex-start;align-items:center;flex-wrap:wrap;gap:8px!important}
+  header nav .links .btn{margin:0;padding:9px 13px;font-size:.78rem;white-space:nowrap}
+}
+@media(max-width:380px){
+  header nav .links{gap:6px!important}
+  header nav .links .btn{padding:8px 10px;font-size:.74rem}
+}
+
 </style>
 </head>
 <body>
